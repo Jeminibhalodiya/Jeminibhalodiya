@@ -1,3 +1,9 @@
+<?php   
+
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -6,7 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display</title>
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script>
 		$("document").ready(function(){
 		$("a.delete").click(function(){
@@ -17,6 +24,24 @@
 </head>
 <body>
 	<table class="modal-content bg table table-condensed table-striped ">
+	<?php
+
+      if(!isset($_SESSION['username'])) // If session is not set then redirect to Registration Page
+       {
+           header("Location:login.php");  
+       }
+       else
+       {
+            echo 'Welcome To Home Page...'.$_SESSION['username'];
+
+          //echo '<script type="text/javascript"> alert("Login Successfully..."); </script>';
+
+            echo "</br><a href='logout.php'>Click Here To Logout</a> "; 
+       }
+
+        
+?>
+	
 		<tr id="ROW1">
 			<td colspan="7"><h3>Data Record</h3></td>
 			<td align="center"><input type="submit" class="btn btn-primaryw-25" value="Add Record"></td>
@@ -90,5 +115,6 @@
 			<td><center><a href="#"><button type="button" class="btnbtn-info">Edit</button> </a>
 			<a href="#" class="delete"><button type="button" class="btnbtn-danger">Delete</button></a></td>
 		</tr>
+		</table>
 	</body>
 </html>

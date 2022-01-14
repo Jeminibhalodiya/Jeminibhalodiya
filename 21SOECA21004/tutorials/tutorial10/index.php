@@ -1,4 +1,40 @@
-<!DOCTYPE html>
+<?php
+	include"connection.php";
+	//echo "connection successfuly";
+?>
+
+<html>
+<body>
+
+    <?php
+    $sql="select * from stud";
+    $result=$db->query($sql);
+    ?>
+    <ul>
+        <?php
+        while($row=$result->fetch_assoc()){
+
+        ?>
+        <li style='font: size 240px;color:blue'>
+    
+            
+            <?= $row['id']?>
+			<?= $row['name']?>
+			<?= $row['city']?>
+			<?= $row['state']?>
+    
+    
+        </li>
+
+        <?php
+        }
+        ?>
+</ul>
+
+</body>
+</html>
+
+<!--<!DOCTYPE html>
 <html lang="en">
 <html>
 <head>
@@ -91,4 +127,4 @@
 			<a href="#" class="delete"><button type="button" class="btnbtn-danger">Delete</button></a></td>
 		</tr>
 	</body>
-</html>
+</html>-->
